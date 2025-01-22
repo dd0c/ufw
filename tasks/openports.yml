@@ -1,12 +1,11 @@
 ---
 
-- community.general.ufw:
+- name: Make sure SSH port is open
+  community.general.ufw:
     rule: allow
     name: OpenSSH
 
-- name: Make sure ufw is enabled and started
-  ansible.builtin.systemd:
-    name: ufw.service
-    state: enabled
+- name: Make sure ufw enable is run
+  ansible.builtin.raw: /usr/sbin/ufw -f enable
 
 ...

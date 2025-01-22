@@ -1,19 +1,19 @@
 ---
 
-- name: Make sure UFW is present
+- name: Make sure ufw is present
   ansible.builtin.package:
     name: ufw
     state: present
 
-- name: Copy default ufw config file to /etc/default/ufw
+- name: Template default ufw config file to /etc/default/ufw
   ansible.builtin.template:
-    src: templates/etc/default/ufw
+    src: templates/etc/default/ufw.j2
     dest: /etc/default/ufw
     mode: '0644'
     owner: root
     group: root
 
-- name: Make sure UFW is enabled and started
+- name: Make sure ufw is enabled and started
   ansible.builtin.systemd:
     name: ufw.service
     state: started
@@ -22,6 +22,6 @@
 
 - name: Include Open service ports
   ansible.builtin.include_tasks:
-    file: services.yml
+    file: openports.yml
 
 ...

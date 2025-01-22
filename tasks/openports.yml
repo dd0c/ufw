@@ -1,4 +1,7 @@
 ---
 
+- community.general.ufw:
+    rule: allow
+    name: OpenSSH
 
 ...

@@ -20,4 +20,8 @@
     enabled: true
     masked: false
 
+- name: Include Open service ports
+  ansible.builtin.include_tasks:
+    file: services.yml
+
 ...

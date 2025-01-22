@@ -4,4 +4,9 @@
     rule: allow
     name: OpenSSH
 
+- name: Make sure ufw is enabled and started
+  ansible.builtin.systemd:
+    name: ufw.service
+    state: enabled
+
 ...
